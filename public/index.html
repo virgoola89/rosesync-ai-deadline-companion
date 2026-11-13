@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f8eee9" />
+  <title>RoseSync — AI Deadline Companion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<nav class="topbar">
+  <a class="brand" href="#top">🌹 <span>RoseSync</span></a>
+  <div class="navlinks"><a href="#concept">Concept</a><a href="#prototype">Prototype</a><a href="#vision">Vision</a></div>
+  <a class="nav-cta" href="#prototype">Try the prototype</a>
+</nav>
+<main class="shell" id="top">
+  <section class="hero proposal-hero">
+    <div class="brand-mark">🌹</div>
+    <p class="eyebrow">ROSESYNC • DEMO</p>
+    <h1>Watch your goal <em>bloom.</em></h1>
+    <p class="intro">An adaptive AI deadline companion that turns time, progress, weather, and motivation into one living lock-screen journey.</p>
+    <div class="steps"><span class="active">01 Rose</span><span>02 Deadline</span><span>03 Bloom Plan</span><span>04 Daily Companion</span></div>
+  </section>
+
+
+  <section class="concept-strip" id="concept">
+    <article><span>01</span><h3>Plan simply</h3><p>Start with a goal, a deadline, and only the big picture.</p></article>
+    <article><span>02</span><h3>Grow visibly</h3><p>Your rose evolves with meaningful progress, not time alone.</p></article>
+    <article><span>03</span><h3>Recover momentum</h3><p>AI steps in when you need clarity, a smaller next step, or a fresh idea.</p></article>
+  </section>
+
+  <section class="vision-card" id="vision">
+    <div><p class="eyebrow">PRODUCT VISION</p><h2>AI should feel like a partner in progress.</h2></div>
+    <p>RoseSync combines a minimal lock screen, lightweight planning, adaptive weather atmosphere, and supportive AI guidance. The user stays in control while the experience helps the goal feel alive.</p>
+  </section>
+
+  <section class="panel" id="roseStep">
+    <div class="section-heading"><div><p class="eyebrow">STEP 01</p><h2>Choose your rose</h2></div><p class="helper">Choose the philosophy you want your project journey to carry.</p></div>
+    <div id="roseGrid" class="rose-grid"></div>
+  </section>
+
+  <section class="panel locked" id="deadlineStep">
+    <div class="section-heading"><div><p class="eyebrow">STEP 02</p><h2>How long is your journey?</h2></div><p class="helper">From a focused two-week sprint to a year-long growth journey.</p></div>
+    <div id="deadlineGrid" class="deadline-grid"></div>
+    <div id="customDeadlineWrap" class="custom-deadline" hidden><label><span>Custom deadline</span><input id="customDeadline" type="date" /></label></div>
+  </section>
+
+  <section class="panel locked" id="planStep">
+    <div class="section-heading"><div><p class="eyebrow">STEP 03</p><h2>My Bloom Plan</h2></div><p class="helper">Give RoseSync the big picture. AI helps shape the journey while you keep ownership of the goal.</p></div>
+    <form id="projectForm" class="project-form">
+      <label><span>Project name</span><input name="title" required value="Handshake Challenge — RoseSync" /></label>
+      <label><span>Main goal</span><textarea name="goal" required rows="3">Create and submit a polished international challenge demo before the deadline.</textarea></label>
+      <label class="full"><span>Your rough plan</span><textarea name="roughPlan" rows="5">Refine concept
+Build interactive demo
+Test the experience
+Prepare submission story
+Submit final project</textarea><small>Keep it broad. AI can suggest the detail later.</small></label>
+      <label class="full"><span>Anything AI should know? <em>Optional</em></span><textarea name="context" rows="3">English-first, elegant, competition-ready, positive human-AI partnership.</textarea></label>
+      <div class="selected-rose" id="selectedRoseSummary"><span class="swatch"></span><div><small>Selected rose</small><strong>Choose a rose above</strong></div></div>
+      <div class="selected-duration" id="selectedDurationSummary"><small>Journey length</small><strong>Choose a deadline type above</strong><span id="calculatedDeadline"></span></div>
+      <button type="submit" class="primary">Create My Blooming Journey →</button><p class="form-note" id="formNote"></p>
+    </form>
+  </section>
+
+  <section class="result" id="resultPanel" hidden><span id="prototype"></span>
+    <div class="result-copy">
+      <p class="eyebrow">STEP 04 • DAILY COMPANION</p><h2>Your project is now alive.</h2>
+      <p id="resultText"></p>
+      <div class="mini-plan"><strong>My Bloom Plan</strong><div id="roughPlanPreview"></div></div>
+      <div class="ai-planner-card">
+        <div><small>AI PLANNING PARTNER</small><h3>Shape the journey, not the goal.</h3><p>RoseSync can suggest milestones, next steps, risks, and useful reference directions. You decide what belongs in your plan.</p></div>
+        <button id="aiPlanBtn" class="primary compact">✨ Let AI Shape My Journey</button>
+        <p id="aiPlanStatus" class="integration-status"></p>
+        <div id="aiPlanResults" class="ai-plan-results" hidden></div>
+      </div>
+      <div class="presentation-mode">
+        <small>PRESENTATION MODE</small>
+        <div class="scenario-buttons">
+          <button data-progress="8">Day 1 · Seed</button>
+          <button data-progress="38">Momentum · Young Plant</button>
+          <button data-progress="62">Midway · Bud</button>
+          <button data-progress="82">Almost There · Opening Bloom</button>
+          <button data-progress="100">Deadline · Full Bloom</button>
+        </div>
+        <p>Use these controls during a proposal presentation to demonstrate the full rose-growth journey instantly.</p>
+      </div>
+      <div class="demo-controls">
+        <div><small>Weather atmosphere</small><div class="weather-buttons"><button data-weather="sunny">☀️ Sunny</button><button data-weather="cloudy">☁️ Cloudy</button><button data-weather="rainy">🌧️ Rainy</button><button data-weather="night">🌙 Night</button></div><button id="liveWeatherBtn" class="secondary live-weather">📍 Use My Live Weather</button><p id="weatherStatus" class="integration-status">Demo modes work without location access.</p></div>
+        <div><small>How does today feel?</small><div class="energy-buttons"><button data-energy="focused">Focused</button><button data-energy="stuck">Stuck</button><button data-energy="tired">Tired</button><button data-energy="inspired">Inspired</button></div></div>
+      </div>
+      <div class="boost-card" id="boostCard"><span class="boost-icon">✨</span><div><strong>Bloom Boost</strong><p>AI is ready to help when your momentum drops.</p><button id="boostBtn" class="secondary">I’m stuck — Bloom Boost me</button></div></div>
+    </div>
+
+    <div class="preview-phone sunny" id="phonePreview">
+      <div class="phone-status"><strong>9:41</strong><span>●●● 100%</span></div>
+      <div class="weather-pill" id="weatherPill">☀️ Sunny</div>
+      <div class="lock-date" id="lockDate">TODAY</div>
+      <div class="rose-stage" id="roseStage">🌱</div>
+      <p class="stage-label" id="stageLabel">Seed</p>
+      <h3 id="previewTitle">Your Project</h3>
+      <p class="countdown" id="previewCountdown">— days left</p>
+      <div class="progress-card"><div><span>Time</span><strong id="timeProgress">0%</strong></div><div><span>Tasks</span><strong id="taskProgress">0%</strong></div><div><span>Bloom</span><strong id="bloomProgress">0%</strong></div></div>
+      <div class="todo-card"><strong>Today's Focus</strong><div id="todoList"></div></div>
+      <p class="lock-message" id="lockMessage">One meaningful step closer to bloom.</p>
+    </div>
+  </section>
+</main>
+<footer style="text-align:center;padding:18px 20px 34px;color:#7d6870;font-size:.78rem">Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo</a>.</footer>
+<script src="app.js"></script>
+</body>
+</html>
