@@ -1,114 +1,115 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#f8eee9" />
-  <title>RoseSync — AI Deadline Companion</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbf6ef">
+  <meta name="description" content="RoseSync: a thoughtful AI-assisted deadline companion. See the product story, the system behind it, and try the live rose-growth lock-screen prototype.">
+  <meta property="og:title" content="RoseSync | Watch your goal bloom">
+  <meta property="og:description" content="A deadline planner with real rose growth, weather-aware visuals, daily focus, and an AI planning companion.">
+  <title>RoseSync | A Deadline Companion That Grows With You</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-<nav class="topbar">
-  <a class="brand" href="#top">🌹 <span>RoseSync</span></a>
-  <div class="navlinks"><a href="#concept">Concept</a><a href="#prototype">Prototype</a><a href="#vision">Vision</a></div>
-  <a class="nav-cta" href="#prototype">Try the prototype</a>
-</nav>
-<main class="shell" id="top">
-  <section class="hero proposal-hero">
-    <div class="brand-mark">🌹</div>
-    <p class="eyebrow">ROSESYNC • DEMO</p>
-    <h1>Watch your goal <em>bloom.</em></h1>
-    <p class="intro">An adaptive AI deadline companion that turns time, progress, weather, and motivation into one living lock-screen journey.</p>
-    <div class="steps"><span class="active">01 Rose</span><span>02 Deadline</span><span>03 Bloom Plan</span><span>04 Daily Companion</span></div>
-  </section>
-
-
-  <section class="concept-strip" id="concept">
-    <article><span>01</span><h3>Plan simply</h3><p>Start with a goal, a deadline, and only the big picture.</p></article>
-    <article><span>02</span><h3>Grow visibly</h3><p>Your rose evolves with meaningful progress, not time alone.</p></article>
-    <article><span>03</span><h3>Recover momentum</h3><p>AI steps in when you need clarity, a smaller next step, or a fresh idea.</p></article>
-  </section>
-
-  <section class="vision-card" id="vision">
-    <div><p class="eyebrow">PRODUCT VISION</p><h2>AI should feel like a partner in progress.</h2></div>
-    <p>RoseSync combines a minimal lock screen, lightweight planning, adaptive weather atmosphere, and supportive AI guidance. The user stays in control while the experience helps the goal feel alive.</p>
-  </section>
-
-  <section class="panel" id="roseStep">
-    <div class="section-heading"><div><p class="eyebrow">STEP 01</p><h2>Choose your rose</h2></div><p class="helper">Choose the philosophy you want your project journey to carry.</p></div>
-    <div id="roseGrid" class="rose-grid"></div>
-  </section>
-
-  <section class="panel locked" id="deadlineStep">
-    <div class="section-heading"><div><p class="eyebrow">STEP 02</p><h2>How long is your journey?</h2></div><p class="helper">From a focused two-week sprint to a year-long growth journey.</p></div>
-    <div id="deadlineGrid" class="deadline-grid"></div>
-    <div id="customDeadlineWrap" class="custom-deadline" hidden><label><span>Custom deadline</span><input id="customDeadline" type="date" /></label></div>
-  </section>
-
-  <section class="panel locked" id="planStep">
-    <div class="section-heading"><div><p class="eyebrow">STEP 03</p><h2>My Bloom Plan</h2></div><p class="helper">Give RoseSync the big picture. AI helps shape the journey while you keep ownership of the goal.</p></div>
-    <form id="projectForm" class="project-form">
-      <label><span>Project name</span><input name="title" required value="Handshake Challenge — RoseSync" /></label>
-      <label><span>Main goal</span><textarea name="goal" required rows="3">Create and submit a polished international challenge demo before the deadline.</textarea></label>
-      <label class="full"><span>Your rough plan</span><textarea name="roughPlan" rows="5">Refine concept
-Build interactive demo
-Test the experience
-Prepare submission story
-Submit final project</textarea><small>Keep it broad. AI can suggest the detail later.</small></label>
-      <label class="full"><span>Anything AI should know? <em>Optional</em></span><textarea name="context" rows="3">English-first, elegant, competition-ready, positive human-AI partnership.</textarea></label>
-      <div class="selected-rose" id="selectedRoseSummary"><span class="swatch"></span><div><small>Selected rose</small><strong>Choose a rose above</strong></div></div>
-      <div class="selected-duration" id="selectedDurationSummary"><small>Journey length</small><strong>Choose a deadline type above</strong><span id="calculatedDeadline"></span></div>
-      <button type="submit" class="primary">Create My Blooming Journey →</button><p class="form-note" id="formNote"></p>
-    </form>
-  </section>
-
-  <section class="result" id="resultPanel" hidden><span id="prototype"></span>
-    <div class="result-copy">
-      <p class="eyebrow">STEP 04 • DAILY COMPANION</p><h2>Your project is now alive.</h2>
-      <p id="resultText"></p>
-      <div class="mini-plan"><strong>My Bloom Plan</strong><div id="roughPlanPreview"></div></div>
-      <div class="ai-planner-card">
-        <div><small>AI PLANNING PARTNER</small><h3>Shape the journey, not the goal.</h3><p>RoseSync can suggest milestones, next steps, risks, and useful reference directions. You decide what belongs in your plan.</p></div>
-        <button id="aiPlanBtn" class="primary compact">✨ Let AI Shape My Journey</button>
-        <p id="aiPlanStatus" class="integration-status"></p>
-        <div id="aiPlanResults" class="ai-plan-results" hidden></div>
-      </div>
-      <div class="presentation-mode">
-        <small>PRESENTATION MODE</small>
-        <div class="scenario-buttons">
-          <button data-progress="8">Day 1 · Seed</button>
-          <button data-progress="38">Momentum · Young Plant</button>
-          <button data-progress="62">Midway · Bud</button>
-          <button data-progress="82">Almost There · Opening Bloom</button>
-          <button data-progress="100">Deadline · Full Bloom</button>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="RoseSync, go to top"><span class="brand-icon">✳</span><span>rose<span class="brand-bold">sync</span><span class="brand-period">.</span></span></a>
+      <nav aria-label="Main navigation" class="main-nav" id="main-nav">
+        <a href="#experience">Try the concept</a>
+        <a href="#how-it-works">The experience</a>
+        <a href="#system">Behind the system</a>
+        <a href="#build-story">Build story</a>
+        <a href="#benefits">What users get</a>
+      </nav>
+      <a href="#experience" class="header-cta">Explore prototype <span aria-hidden="true">↗</span></a>
+      <button class="mobile-menu" type="button" id="menu-toggle" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> THE ROSESYNC PROJECT <span class="eyebrow-dot">✦</span> 2026</p>
+          <h1 id="hero-title">Your next goal<br>deserves to <em>bloom.</em></h1>
+          <p class="hero-description">A deadline shouldn't just count down. It should give you somewhere to begin, a next step worth doing, and a little reason to keep going.</p>
+          <div class="hero-actions"><a class="button button-primary" href="#experience">Try the live preview <span>↗</span></a><a class="button button-text" href="#system">See how it works <span>↘</span></a></div>
+          <div class="hero-proof"><span class="proof-mark">✺</span><span>One clear focus. Lifelike rose growth. A gentler way to finish.</span></div>
         </div>
-        <p>Use these controls during a proposal presentation to demonstrate the full rose-growth journey instantly.</p>
+        <div class="hero-art" aria-label="Photorealistic pink rose in a cinematic garden">
+          <div class="hero-image-frame"><img src="assets/roses/pink.jpg" alt="Pink rose with lifelike petals and cinematic garden light" width="427" height="724"></div>
+          <span class="hero-halo" aria-hidden="true"></span>
+          <div class="float-note float-note-top"><span class="float-kicker">A GOAL IN MOTION</span><strong>Day by day.<br>Petal by petal.</strong></div>
+          <div class="float-note float-note-bottom"><span class="live-dot"></span> 5 roses · 6 growth stages</div>
+          <span class="petal petal-a" aria-hidden="true">❧</span><span class="petal petal-b" aria-hidden="true">❧</span>
+        </div>
       </div>
-      <div class="demo-controls">
-        <div><small>Weather atmosphere</small><div class="weather-buttons"><button data-weather="sunny">☀️ Sunny</button><button data-weather="cloudy">☁️ Cloudy</button><button data-weather="rainy">🌧️ Rainy</button><button data-weather="night">🌙 Night</button></div><button id="liveWeatherBtn" class="secondary live-weather">📍 Use My Live Weather</button><p id="weatherStatus" class="integration-status">Demo modes work without location access.</p></div>
-        <div><small>How does today feel?</small><div class="energy-buttons"><button data-energy="focused">Focused</button><button data-energy="stuck">Stuck</button><button data-energy="tired">Tired</button><button data-energy="inspired">Inspired</button></div></div>
-      </div>
-      <div class="boost-card" id="boostCard"><span class="boost-icon">✨</span><div><strong>Bloom Boost</strong><p>AI is ready to help when your momentum drops.</p><button id="boostBtn" class="secondary">I’m stuck — Bloom Boost me</button></div></div>
-    </div>
+      <div class="container hero-bottom"><span>01 / THE IDEA</span><span>SCROLL TO EXPLORE <span aria-hidden="true">↓</span></span></div>
+    </section>
 
-    <div class="preview-phone sunny" id="phonePreview">
-      <div class="phone-status"><strong>9:41</strong><span>●●● 100%</span></div>
-      <div class="weather-pill" id="weatherPill">☀️ Sunny</div>
-      <div class="lock-date" id="lockDate">TODAY</div>
-      <div class="rose-stage" id="roseStage">🌱</div>
-      <p class="stage-label" id="stageLabel">Seed</p>
-      <h3 id="previewTitle">Your Project</h3>
-      <p class="countdown" id="previewCountdown">— days left</p>
-      <div class="progress-card"><div><span>Time</span><strong id="timeProgress">0%</strong></div><div><span>Tasks</span><strong id="taskProgress">0%</strong></div><div><span>Bloom</span><strong id="bloomProgress">0%</strong></div></div>
-      <div class="todo-card"><strong>Today's Focus</strong><div id="todoList"></div></div>
-      <p class="lock-message" id="lockMessage">One meaningful step closer to bloom.</p>
-    </div>
-  </section>
-</main>
-<footer style="text-align:center;padding:18px 20px 34px;color:#7d6870;font-size:.78rem">Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo</a>.</footer>
-<script src="app.js"></script>
+    <section class="manifesto" aria-label="The problem RoseSync solves">
+      <div class="container manifesto-grid"><div><p class="eyebrow eyebrow-light">WHY ROSESYNC EXISTS</p><h2>Most countdowns tell you <em>how much time is left.</em></h2></div><div class="manifesto-right"><p>They don't tell you what matters today. They don't notice when the plan gets heavy. And they definitely don't make progress feel alive.</p><div class="manifesto-quote">RoseSync turns the countdown into a small, visual act of moving forward.</div></div></div>
+    </section>
+
+    <section class="experience section-pad" id="experience" aria-labelledby="demo-title">
+      <div class="container">
+        <div class="section-head demo-head"><div><p class="eyebrow">02 / THE LIVE CONCEPT</p><h2 id="demo-title">Make it <em>your own.</em></h2><p>Choose a rose, set a direction, and watch the lock screen change. Every control here works.</p></div><div class="head-aside"><span class="dot"></span> INTERACTIVE WEB PROTOTYPE <span class="asterisk">✳</span></div></div>
+        <div class="demo-shell">
+          <div class="demo-panel">
+            <div class="panel-top"><span>YOUR ROSESYNC SETUP</span><span>01 / 04</span></div>
+            <div class="demo-step"><div class="step-title"><span class="step-number">01</span><div><h3>Choose your rose</h3><p>The color you choose stays with you as it grows.</p></div></div>
+              <div class="rose-choices" id="rose-choices" role="group" aria-label="Choose a rose color">
+                <button type="button" class="rose-choice active" data-rose="pink" aria-pressed="true"><img src="assets/roses/pink.jpg" alt="Pink rose"><span>Pink</span></button>
+                <button type="button" class="rose-choice" data-rose="red" aria-pressed="false"><img src="assets/roses/red.jpg" alt="Red rose"><span>Red</span></button>
+                <button type="button" class="rose-choice" data-rose="white" aria-pressed="false"><img src="assets/roses/white.jpg" alt="White rose"><span>White</span></button>
+                <button type="button" class="rose-choice" data-rose="yellow" aria-pressed="false"><img src="assets/roses/yellow.jpg" alt="Yellow rose"><span>Yellow</span></button>
+                <button type="button" class="rose-choice" data-rose="lavender" aria-pressed="false"><img src="assets/roses/lavender.jpg" alt="Lavender rose"><span>Lavender</span></button>
+              </div><div class="rose-meaning" id="rose-meaning" aria-live="polite"><span>✺</span><strong>Pink rose</strong><small>Growth, kindness & steady self-development.</small></div>
+            </div>
+            <div class="demo-step"><div class="step-title"><span class="step-number">02</span><div><h3>Give your goal a deadline</h3><p>A rough goal is enough. The plan can get clearer later.</p></div></div>
+              <label class="input-label" for="project-name">PROJECT NAME</label><input id="project-name" class="text-input" type="text" maxlength="54" value="My creative project" placeholder="What are you working toward?">
+              <label class="input-label duration-label">JOURNEY LENGTH</label><div class="duration-options" role="group" aria-label="Deadline duration">
+                <button type="button" class="duration-choice active" data-duration="14">2 weeks</button><button type="button" class="duration-choice" data-duration="30">1 month</button><button type="button" class="duration-choice" data-duration="90">3 months</button><button type="button" class="duration-choice" data-duration="180">6 months</button><button type="button" class="duration-choice" data-duration="365">1 year</button>
+              </div>
+            </div>
+            <div class="demo-step"><div class="step-title"><span class="step-number">03</span><div><h3>Keep today's plan small</h3><p>Two clear steps are better than a screen full of noise.</p></div></div>
+              <div class="todo-list" id="todo-list" aria-label="Today’s demo tasks"></div>
+              <form id="add-task-form" class="add-task-form"><label class="sr-only" for="new-task">Add a task</label><input id="new-task" type="text" maxlength="75" placeholder="Add one small task…" required><button type="submit" aria-label="Add a task" title="Add task">+</button></form>
+            </div>
+            <div class="demo-step last-step"><div class="step-title"><span class="step-number">04</span><div><h3>Set the atmosphere</h3><p>Change the garden mood, not the goal.</p></div></div>
+              <div class="weather-options" role="group" aria-label="Choose weather visual mode"><button type="button" class="weather-choice active" data-weather="sunny"><span>☀</span> Sunny</button><button type="button" class="weather-choice" data-weather="cloudy"><span>☁</span> Cloudy</button><button type="button" class="weather-choice" data-weather="rainy"><span>☂</span> Rainy</button><button type="button" class="weather-choice" data-weather="night"><span>☾</span> Night</button></div>
+              <p class="field-note">These are visual demo modes. A connected product can request local weather with your permission.</p>
+            </div>
+          </div>
+          <div class="demo-preview">
+            <div class="preview-topline"><span><span class="live-pulse"></span> LIVE PREVIEW</span><span>LOCK SCREEN · CONCEPT</span></div>
+            <div class="phone-holder"><div class="phone" id="phone" data-weather="sunny">
+              <div class="phone-notch"></div>
+              <div class="scene"><img id="phone-rose" src="assets/stages/pink/seed.webp" alt="Pink rose, seed growth stage"><div class="scene-shade"></div><div class="scene-sun"></div><div class="scene-rain"></div><div class="scene-stars"></div></div>
+              <div class="phone-ui"><div class="phone-status"><span>9:41</span><span>⌁ ▰ ▰</span></div><div class="lock-symbol">♧</div><div class="phone-clock">09:41</div><div class="phone-date" id="phone-date">TODAY</div><div class="phone-content"><span class="phone-kicker">MY BLOOM JOURNEY</span><h3 id="phone-project">My creative project</h3><div class="countdown"><span id="days-left">14</span> <span id="countdown-unit">days left</span></div><div class="phone-stage" id="phone-stage">SEED · DAY 1</div></div><div class="phone-focus"><div class="phone-focus-head"><span>✳ TODAY'S FOCUS</span><span id="focus-count">0 / 2</span></div><div id="phone-tasks"></div><div class="phone-meter"><span id="phone-meter-fill"></span></div><div class="phone-footer"><span id="phone-weather">☀ Sunny</span><span id="phone-bloom">0% bloom</span></div></div></div>
+              <div class="phone-home"></div>
+            </div></div>
+            <div class="time-travel"><div class="time-travel-head"><strong>Preview the growth journey</strong><span id="day-label">Day 1 of 14</span></div><input type="range" id="day-slider" min="0" max="14" value="0" aria-label="Preview how the rose develops over the journey"><div class="slider-ends"><span>Seed</span><span>Full bloom</span></div></div>
+            <div class="preview-foot"><span>✦</span> This is a visual preview. It does not change your phone's lock screen.</div>
+          </div>
+        </div>
+        <div class="bloom-boost-demo"><div class="boost-heading"><div><p class="eyebrow">THE PERSONAL TOUCH</p><h3>And when motivation dips? <em>Bloom Boost.</em></h3><p>AI should help with the next move, not flood you with more things to do.</p></div><div class="boost-icon">✦</div></div><div class="boost-interaction"><div class="energy-options" role="group" aria-label="Choose how you feel"><button class="energy-choice active" type="button" data-energy="focused">Focused</button><button class="energy-choice" type="button" data-energy="stuck">I'm stuck</button><button class="energy-choice" type="button" data-energy="tired">Tired</button><button class="energy-choice" type="button" data-energy="inspired">Inspired</button></div><div class="boost-response"><span class="boost-response-symbol">✳</span><div><small>BLOOM BOOST · SAMPLE RESPONSE</small><p id="boost-response">You're moving. Pick one task and give it 20 minutes of real attention. The rest can wait.</p></div></div></div><p class="boost-disclaimer">Sample coaching in this website is rule-based. Gemini-generated planning and coaching belong in the connected backend.</p></div>
+      </div>
+    </section>
+
+    <section class="process section-pad" id="how-it-works" aria-labelledby="works-title"><div class="container"><div class="section-head"><div><p class="eyebrow">03 / THE EXPERIENCE</p><h2 id="works-title">A simple idea.<br><em>A daily ritual.</em></h2></div><p>Not another giant planner. RoseSync takes a big goal and brings it down to something you can actually do today.</p></div><div class="process-grid"><article class="process-card"><span class="process-index">01 / CHOOSE</span><div class="process-image"><img src="assets/roses/lavender.jpg" alt="Close-up visual of a lavender rose" loading="lazy"></div><h3>Start with a rose.</h3><p>Five colors, five meanings. Pick the one that feels right for the journey.</p></article><article class="process-card"><span class="process-index">02 / PLAN</span><div class="process-illustration plan-illustration"><span class="plan-note note-a">Launch the idea ✓</span><span class="plan-note note-b">Build the draft</span><span class="plan-note note-c">Review & finish</span><span class="plan-circle">✳</span></div><h3>Describe the goal.</h3><p>Name it, choose a deadline, and put down the rough steps. That's enough to start.</p></article><article class="process-card"><span class="process-index">03 / GROW</span><div class="process-image"><img src="assets/stages/pink/opening.webp" alt="Pink rose opening during its growth journey" loading="lazy"></div><h3>See progress grow.</h3><p>The rose changes with time and completed tasks. Weather shapes the garden mood.</p></article><article class="process-card"><span class="process-index">04 / RESET</span><div class="process-illustration reset-illustration"><div class="mini-chat"><span>✦ BLOOM BOOST</span><p>One small step is enough to restart.</p><b>You're still growing.</b></div></div><h3>Find the next move.</h3><p>When you're stuck, get a smaller step, a fresh idea, or a little breathing room.</p></article></div></div></section>
+
+    <section class="system-section section-pad" id="system" aria-labelledby="system-title"><div class="container"><div class="section-head system-head"><div><p class="eyebrow eyebrow-light">04 / BEHIND THE EXPERIENCE</p><h2 id="system-title">A pretty rose.<br><em>A real system behind it.</em></h2></div><p>The flower is only the visible part. The planner, progress model, AI, weather, and wallpaper layer each have a different job.</p></div><div class="architecture" role="list"><div class="architecture-node" role="listitem"><span>01 / INPUT</span><div class="node-icon">◫</div><h3>Personal setup</h3><p>Rose, project goal, deadline, rough plan</p></div><div class="architecture-arrow" aria-hidden="true">→</div><div class="architecture-node" role="listitem"><span>02 / LOGIC</span><div class="node-icon">◎</div><h3>Progress engine</h3><p>Time left, tasks done, growth stage</p></div><div class="architecture-arrow" aria-hidden="true">→</div><div class="architecture-node" role="listitem"><span>03 / SUPPORT</span><div class="node-icon">✦</div><h3>AI companion</h3><p>Milestone suggestions, Bloom Boost, daily focus</p></div><div class="architecture-arrow" aria-hidden="true">→</div><div class="architecture-node" role="listitem"><span>04 / DISPLAY</span><div class="node-icon">✿</div><h3>Visual renderer</h3><p>Photorealistic rose visuals and weather atmosphere</p></div></div><div class="system-bottom"><div class="system-module"><div class="system-module-head"><span class="module-icon">⌘</span><span>WHAT WORKS IN THIS WEBSITE</span></div><p>Rose selection, deadline presets, task checkboxes, growth preview, four weather looks, sample Bloom Boost, and local browser saving.</p><span class="module-state">LIVE IN THIS PROTOTYPE</span></div><div class="system-module"><div class="system-module-head"><span class="module-icon">✧</span><span>CONNECTED APP SERVICES</span></div><p>Secure Gemini requests for plan suggestions, a weather provider, and stored projects. We designed the integration path; the website preview runs without these services.</p><span class="module-state">REQUIRES BACKEND</span></div><div class="system-module"><div class="system-module-head"><span class="module-icon">▣</span><span>THE ANDROID LAYER</span></div><p>A native Android app would generate and apply updated lock-screen wallpaper. A browser alone can't silently replace the device lock screen.</p><span class="module-state">NEXT BUILD STAGE</span></div></div><div class="privacy-line"><span>◉</span> Privacy by design: real weather should ask for location permission. Gemini keys stay on a server, never in the browser.</div></div></section>
+
+    <section class="story section-pad" id="build-story" aria-labelledby="story-title"><div class="container"><div class="section-head"><div><p class="eyebrow">05 / BUILD STORY</p><h2 id="story-title">From a countdown<br>to a <em>companion.</em></h2></div><p>The concept changed because the real problem wasn't time. It was staying connected to a goal, especially when the excitement fades.</p></div><div class="story-track"><article class="story-entry"><div class="story-number">01</div><div><span>THE FIRST SPARK</span><h3>A countdown lock screen</h3><p>Started with a Handshake challenge: make a deadline visible on your phone.</p></div></article><article class="story-entry"><div class="story-number">02</div><div><span>THE ROSE IDEA</span><h3>Progress you can see</h3><p>Replaced a plain timer with the six stages of a growing rose, from seed to full bloom.</p></div></article><article class="story-entry"><div class="story-number">03</div><div><span>PERSONALIZATION</span><h3>A rose with meaning</h3><p>Built five color choices and simple deadline options from two weeks to a year.</p></div></article><article class="story-entry"><div class="story-number">04</div><div><span>THE DAILY PLAN</span><h3>One doable next step</h3><p>Added rough planning, small to-dos, time progress, and task-based bloom progress.</p></div></article><article class="story-entry"><div class="story-number">05</div><div><span>THE SUPPORT LAYER</span><h3>AI as a goal partner</h3><p>Designed Gemini-powered suggestions and Bloom Boost for the moments people feel stuck.</p></div></article><article class="story-entry"><div class="story-number">06</div><div><span>THE WORKING CONCEPT</span><h3>Show the idea, then build it</h3><p>Created a web demo with photorealistic rose imagery, weather moods, and a phone preview. Native wallpaper updates are the next step.</p></div></article></div><div class="build-stack"><div><span class="small-caps">DESIGNED AROUND</span><h3>Human progress, not a perfect streak.</h3></div><div class="stack-tags"><span>HTML / CSS / JavaScript</span><span>Node.js / Express</span><span>Gemini backend path</span><span>Weather integration path</span><span>Android wallpaper path</span></div></div></div></section>
+
+    <section class="benefits section-pad" id="benefits" aria-labelledby="benefits-title"><div class="container"><div class="section-head"><div><p class="eyebrow">06 / WHAT USERS GET</p><h2 id="benefits-title">Less noise.<br><em>More forward motion.</em></h2></div><p>The goal isn't to stare at a dashboard all day. It's to glance at the phone, know what matters, and get back to living.</p></div><div class="benefits-layout"><div class="benefits-feature"><div class="benefit-photo"><img src="assets/stages/red/bloom.webp" alt="Deep red rose in full bloom" loading="lazy"></div><div class="benefit-feature-caption"><span>THE HEART OF THE PRODUCT</span><h3>A goal that looks alive.</h3><p>One flower. Your progress. Your pace.</p></div></div><div class="benefits-grid"><div class="benefit-item"><span>01</span><h3>Clear daily focus</h3><p>A short to-do list, never an overwhelming wall of tasks.</p></div><div class="benefit-item"><span>02</span><h3>A more personal deadline</h3><p>Your own rose, your own timeline, and visible stages of growth.</p></div><div class="benefit-item"><span>03</span><h3>Fresh ideas when stuck</h3><p>Support that makes the next step smaller, not the day heavier.</p></div><div class="benefit-item"><span>04</span><h3>A calmer glance at time</h3><p>Weather-led atmosphere and a clean lock screen built to stay readable.</p></div><div class="benefit-item"><span>05</span><h3>Progress without pressure</h3><p>Done tasks matter. A slow day doesn't mean your rose has failed.</p></div><div class="benefit-item"><span>06</span><h3>A plan you still own</h3><p>Suggestions remain suggestions. The user keeps the final say.</p></div></div></div></div></section>
+
+    <section class="closing" aria-labelledby="closing-title"><div class="container closing-inner"><p class="eyebrow eyebrow-light">WATCH YOUR GOAL BLOOM</p><h2 id="closing-title">Big things begin<br>with <em>one small step.</em></h2><p>RoseSync is a product concept and an interactive prototype. The vision is simple: let technology keep you focused without making you feel managed.</p><a class="button button-cream" href="#experience">Explore the prototype <span>↗</span></a><div class="closing-flower" aria-hidden="true">✿</div></div></section>
+    <section class="faq section-pad" aria-labelledby="faq-title"><div class="container faq-grid"><div><p class="eyebrow">GOOD TO KNOW</p><h2 id="faq-title">What this prototype <em>really does.</em></h2></div><div class="faq-questions"><details><summary>Does this website change my phone's real lock screen?</summary><p>No. It previews the design in a simulated phone. A native Android build is needed to apply and refresh a device wallpaper automatically.</p></details><details><summary>Does Bloom Boost call Gemini here?</summary><p>Not in this static showcase. The sample messages are rule-based. The connected app can use Gemini through a secure backend, with user approval before adding suggested tasks.</p></details><details><summary>Is the weather in the preview live?</summary><p>No. The four buttons are demo modes. A connected version can use a weather service after the user gives location permission.</p></details><details><summary>Will my demo choices be saved?</summary><p>Yes, in this browser using localStorage. There is no account or shared database in this showcase. Clearing browser storage resets the demo.</p></details></div></div></section>
+  </main>
+  <footer class="footer"><div class="container footer-inner"><a class="brand" href="#top"><span class="brand-icon">✳</span><span>rose<span class="brand-bold">sync</span><span class="brand-period">.</span></span></a><p>Watch your goal bloom, one meaningful step at a time.</p><span>PRODUCT CONCEPT · INTERACTIVE SHOWCASE · 2026</span></div></footer>
 </body>
 </html>
